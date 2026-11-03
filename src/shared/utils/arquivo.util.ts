@@ -7,7 +7,7 @@ export async function SalvarJson(nomeArquivo: string, dados: unknown): Promise<v
     await mkdir(pastaOutput, { recursive: true });
     const nomeSaida = nomeArquivo.replace(/^dataset(\d+)\..*$/i, 'respostas$1.json');
 
-    const caminhoArquivo = path.join(pastaOutput, nomeArquivo);
+    const caminhoArquivo = path.join(pastaOutput, nomeSaida);
 
     await writeFile(
         caminhoArquivo,

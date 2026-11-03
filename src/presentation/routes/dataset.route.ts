@@ -18,6 +18,8 @@ const datasetController = new DatasetController(datasetService);
  *         multipart/form-data:
  *           schema:
  *             type: object
+ *             required:
+ *               - file
  *             properties:
  *               file:
  *                 type: string
