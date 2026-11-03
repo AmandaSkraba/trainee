@@ -1,7 +1,7 @@
 import { Router } from 'express';
 import { DatasetController } from '../controllers/dataset.controller';
 import { DatasetService } from '../../application/services/dataset.service';
-import multer from 'multer';
+import { UploadArquivo } from '../../shared/utils/arquivo.util';
 
 const datasetRoutes = Router();
 const datasetService = new DatasetService();
@@ -28,11 +28,9 @@ const datasetController = new DatasetController(datasetService);
  *       200:
  *         description: Dataset processado
  */
-const upload = multer({ storage: multer.memoryStorage() });
-
 datasetRoutes.post(
     '/upload',
-    upload.single('file'),
+    UploadArquivo.single('file'),
     datasetController.uploadDataset.bind(datasetController)
 );
 

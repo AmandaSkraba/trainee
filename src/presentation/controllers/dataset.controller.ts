@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { Readable } from 'node:stream';
 
 import { DatasetService } from '../../application/services/dataset.service';
+import { createReadStream } from 'node:fs';
 
 export class DatasetController {
 
@@ -14,12 +15,23 @@ export class DatasetController {
         res: Response
     ): Promise<void> {
 
-        const nomeArquivo = req.file?.originalname ?? 'dataset';
+        if (!req.file) {
+            res.status(400).json({ message: 'Arquivo não enviado.' });
+            return;
+        }
 
-        const stream = Readable.from([req.file!.buffer]);
+        const nomeArquivo = req.file.originalname;
 
-        const response = await this.datasetService.processarDataset(stream, nomeArquivo);
+
+        const stream = createReadStream(req.file.path);
+
+        const response = await this.datasetService.processarDataset(
+            stream,
+            nomeArquivo
+        );
 
         res.status(200).json(response);
+
+
     }
 }
