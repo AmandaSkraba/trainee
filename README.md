@@ -119,7 +119,7 @@ cd trainee
 ### 5.3. Instalar as dependências
 
 ```bash
-npm install
+npm install -f
 ```
 
 ### 5.4. Executar em desenvolvimento
