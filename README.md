@@ -283,3 +283,26 @@ A diferença está na última casa decimal apresentada, evidenciando uma limita�
 Até a conclusão do desenvolvimento, não consegui eliminar essa divergência específica. Entretanto, identifiquei sua origem provável e compreendi que aumentar a quantidade de casas decimais de PI ou utilizar métodos de formatação não aumenta, por si só, a precisão dos cálculos realizados com `Number`.
 
 Esse ponto ficou como uma oportunidade de aprofundamento, especialmente em relação à utilização de bibliotecas de precisão arbitrária e à comparação de resultados numéricos com tolerâncias adequadas.
+
+#### Validação adicional em C#/.NET
+
+Para investigar melhor a divergência, realizei um teste adicional em um projeto Console utilizando C#/.NET.
+
+Implementei novamente a fórmula de Haversine, utilizando as mesmas coordenadas, o mesmo raio médio da Terra e as mesmas operações matemáticas utilizadas na aplicação TypeScript.
+
+O teste foi executado com os seguintes valores:
+
+| Coordenada | Latitude | Longitude |
+|---|---:|---:|
+| Ponto 1 | -7.33193 | -65.9313 |
+| Ponto 2 | -7.33197 | -65.93137 |
+
+**Resultado obtido no console .NET:**
+
+```text
+Distância = 8.909619516337239
+```
+
+O resultado correspondeu exatamente ao valor esperado disponibilizado pela empresa no arquivo resultados.
+
+Essa comparação foi importante porque mostrou que a mesma implementação matemática, aplicada em outro ambiente de execução, conseguiu reproduzir o resultado esperado.
