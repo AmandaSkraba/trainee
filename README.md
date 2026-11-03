@@ -58,6 +58,8 @@ src/
 
 Os arquivos contêm os resultados identificados durante o processamento, incluindo as informações dos encontros, as respectivas posições e as distâncias calculadas.
 
+O resultado aparece também como um JSON no response da API.
+
 ## 4. Decisões técnicas e justificativas
 
 ### 4.1. Por que Utilizei TypeScript?
